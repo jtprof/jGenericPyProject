@@ -1,0 +1,18 @@
+# This service unit is for testing timer units 
+# By David Both
+# Licensed under GPL V2
+#
+
+[Unit]
+Description=Logs system statistics to the systemd journal
+Wants=myMonitor.timer
+
+[Service]
+Type=oneshot
+User=togdim
+EnvironmentFile=/opt/certemitter/env
+ExecStart=/opt/certemitter/execute.sh
+
+[Install]
+WantedBy=multi-user.target
+

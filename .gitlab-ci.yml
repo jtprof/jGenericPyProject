@@ -1,0 +1,27 @@
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  script:
+    - ./.test.sh
+
+staging:
+  stage: deploy
+  script:
+    - echo "Put your action or do nothing"
+  only:
+    - master
+
+production:
+  stage: deploy
+  variables:
+    T_LOCATION: "/opt/jPyGenericProject"
+    T_INSTANCE: "dub-ansible01"
+  script:
+    - echo "Deploy to production"
+    - sudo -E ./.deploy_prod.sh
+  only:
+    - production
+

@@ -1,0 +1,2 @@
+#jPyLibs 
+git+https://gitlab01.anpa.corp.amazon.com/togdim/jPyLibs.git

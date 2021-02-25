@@ -1,0 +1,9 @@
+*.pyc
+__pycache__
+pyvenv.cfg
+.vscode/**
+bin/**
+include/**
+lib/**
+lib64
+lib64/**
