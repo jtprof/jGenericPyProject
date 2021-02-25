@@ -20,5 +20,5 @@ fi
 PTHN=$(realpath $(which python3))
 LD_LIBRARY_PATH="$(dirname ${PTHN})/../lib":${LD_LIBRARY_PATH}
 
-${PTHN} ${FULL_EXE_FOLDER}/${l_app} ${args[@]}
+python3 ${FULL_EXE_FOLDER}/${l_app} ${args[@]}
 
