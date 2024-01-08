@@ -1,0 +1,3 @@
+[MAIN]
+max-line-length=300
+disable=locally-disabled, invalid-name, invalid-name, bare-except, too-few-public-methods, too-many-arguments, too-many-ancestors, too-many-return-statements, global-statement, relative-beyond-top-level

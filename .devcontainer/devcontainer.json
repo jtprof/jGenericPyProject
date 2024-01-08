@@ -1,0 +1,36 @@
+{
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": ".."
+	},
+	"appPort": [ "9000:8080" ],
+	"workspaceMount": "source=${localWorkspaceFolder},target=/var/task,type=bind",
+	"workspaceFolder": "/var/task",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"amazonwebservices.aws-toolkit-vscode",
+				"ms-python.python",
+				"ms-azuretools.vscode-docker",
+				"vue.volar"
+			]
+		}
+	},
+	"mounts": [
+		"source=${localEnv:HOME}/.ssh,target=/home/developer/.ssh,type=bind,consistency=cached",
+		"source=${localWorkspaceFolder}/.devcontainer/.zsh_history,target=/home/developer/.zsh_history,type=bind,consistency=cached"
+	],
+	"forwardPorts": [8080,],
+	"containerUser": "developer",
+	"containerEnv": {
+		"AWS_REGION": "${localEnv:AWS_REGION}",
+		"AWS_ACCOUNT": "${localEnv:AWS_ACCOUNT}",
+		"AWS_ACCESS_KEY_ID": "${localEnv:AWS_ACCESS_KEY_ID}",
+		"AWS_SECRET_ACCESS_KEY": "${localEnv:AWS_SECRET_ACCESS_KEY}",
+		"AWS_SESSION_TOKEN": "${localEnv:AWS_SESSION_TOKEN}",
+		"LAMBDA_TASK_ROOT": "/var/task/src",
+		"LAMBDA_RUNTIME_DIR": "/var/task/src"
+	},
+	"postStartCommand": "python3 -m pip install --editable ./pkgs/jpylib --user",
+	"initializeCommand": "touch ${localWorkspaceFolder}/.devcontainer/.zsh_history"
+}
